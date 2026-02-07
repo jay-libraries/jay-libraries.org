@@ -1,0 +1,78 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdated": "2024-01-01",
+    "author": "Jay Libraries Team"
+  },
+  "editingRules": [
+    {
+      "id": 1,
+      "title": "JSON as Single Source of Truth",
+      "description": "All content must be managed exclusively through JSON files. No hardcoded data should exist in HTML or JavaScript files."
+    },
+    {
+      "id": 2,
+      "title": "Unique Identifiers",
+      "description": "Every book and category must have a unique ID following the format: 'jl-XXX' for books and 'cat-XX' for categories."
+    },
+    {
+      "id": 3,
+      "title": "Color Restrictions",
+      "description": "Gold (#D4AF37) is strictly for accent purposes only. Primary color is black (#000000) and secondary is white (#FFFFFF)."
+    },
+    {
+      "id": 4,
+      "title": "File Structure",
+      "description": "Maintain the established folder structure. All assets should be properly organized in their respective directories."
+    },
+    {
+      "id": 5,
+      "title": "No External Dependencies",
+      "description": "The platform runs entirely without a backend. No Firebase, no databases, no server-side processing required."
+    }
+  ],
+  "usageRules": [
+    {
+      "id": 1,
+      "title": "Content Attribution",
+      "description": "All resources must include proper attribution to their original authors and publishers."
+    },
+    {
+      "id": 2,
+      "title": "Personal Use",
+      "description": "Downloaded materials are intended for personal educational use only. Commercial redistribution is prohibited."
+    },
+    {
+      "id": 3,
+      "title": "Respect Copyright",
+      "description": "Users must respect copyright laws and intellectual property rights for all content available on the platform."
+    },
+    {
+      "id": 4,
+      "title": "Quality Standards",
+      "description": "Only high-quality, properly formatted resources should be added to the library collection."
+    },
+    {
+      "id": 5,
+      "title": "Community Guidelines",
+      "description": "Contribute constructively to the platform. Report any issues or improvements through proper channels."
+    }
+  ],
+  "technicalRules": [
+    {
+      "id": 1,
+      "title": "Browser Support",
+      "description": "Platform supports all modern browsers: Chrome, Firefox, Safari, Edge (latest 2 versions)."
+    },
+    {
+      "id": 2,
+      "title": "Accessibility",
+      "description": "All components must be accessible. Use ARIA labels and support keyboard navigation."
+    },
+    {
+      "id": 3,
+      "title": "Performance",
+      "description": "Optimize all assets. Images should be compressed, and JavaScript should be modular and efficient."
+    }
+  ]
+}
