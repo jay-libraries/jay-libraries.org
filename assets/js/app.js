@@ -238,3 +238,21 @@
           searchInput.value = btn.dataset.search;
           searchInput.dispatchEvent(new Event('input'));
         }
+              });
+    });
+  }
+
+  // ═══════════════════════════════════════════════════════════
+  // INITIALIZE
+  // ═══════════════════════════════════════════════════════════
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    // Check if we're on the home page
+    if (document.getElementById('featured-books')) {
+      initHomePage();
+    }
+    
+    initSearchModal();
+  });
+
+})();
