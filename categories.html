@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse books by category at Jay Libraries.">
+  <title>Categories - Jay Libraries</title>
+  
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="currentColor">
+          <path d="M8 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V6z"/>
+          <path d="M12 10h16M12 16h16M12 22h10" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Jay <span>Libraries</span></span>
+      </a>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="library.html" class="nav-link">Library</a></li>
+          <li><a href="categories.html" class="nav-link active">Categories</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="search-toggle" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <a href="favorites.html" class="favorites-toggle" aria-label="View favorites">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="favorites-badge" style="display: none;">0</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Search Modal -->
+  <div class="search-modal" role="dialog" aria-label="Search">
+    <div class="search-modal-header">
+      <svg class="search-modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="search-modal-input" placeholder="Search books, authors, categories..." autocomplete="off">
+      <button class="search-modal-close" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-modal-body" id="search-results"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="padding-top: calc(var(--header-height) + var(--space-12)); padding-bottom: var(--space-20);">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          Browse by Topic
+        </span>
+        <h1 class="section-title">Categories</h1>
+        <p class="section-description">
+          Explore our collection organized by subject and topic
+        </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="categories-grid" id="all-categories">
+        <!-- Populated by JavaScript -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none;">
+        <p>&copy; 2024 Jay Libraries. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const container = document.getElementById('all-categories');
+      if (!container) return;
+
+      const [categories, books] = await Promise.all([
+        JayLibraries.getCategories(),
+        JayLibraries.getBooks()
+      ]);
+
+      if (!categories || !books) {
+        container.innerHTML = '<p class="text-center text-muted">Failed to load categories.</p>';
+        return;
+      }
+
+      container.innerHTML = categories.map(cat => {
+        const count = books.filter(b => b.category === cat.name).length;
+        return JayLibraries.createCategoryCard(cat, count);
+      }).join('');
+    })();
+  </script>
+</body>
+</html>
