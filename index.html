@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jay Libraries - A premium digital library platform for knowledge seekers. Discover curated books, articles, and resources.">
+  <meta name="keywords" content="digital library, books, ebooks, knowledge, reading">
+  <meta name="author" content="Jay Libraries">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Jay Libraries - Premium Digital Library">
+  <meta property="og:description" content="Discover curated books and resources for knowledge seekers.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jaylibraries.com">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <title>Jay Libraries - Premium Digital Library</title>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="currentColor">
+          <path d="M8 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V6z"/>
+          <path d="M12 10h16M12 16h16M12 22h10" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Jay <span>Libraries</span></span>
+      </a>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link active">Home</a></li>
+          <li><a href="library.html" class="nav-link">Library</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="search-toggle" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <a href="favorites.html" class="favorites-toggle" aria-label="View favorites">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="favorites-badge" style="display: none;">0</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Search Modal -->
+  <div class="search-modal" role="dialog" aria-label="Search">
+    <div class="search-modal-header">
+      <svg class="search-modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="search-modal-input" placeholder="Search books, authors, categories..." autocomplete="off">
+      <button class="search-modal-close" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-modal-body" id="search-results"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <span class="hero-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
+          Premium Digital Library
+        </span>
+        
+        <h1 class="hero-title">
+          The Art of<br>
+          <span class="hero-title-highlight">Knowledge</span>
+        </h1>
+        
+        <p class="hero-subtitle">
+          A curated collection of the world's finest books and resources, 
+          designed for those who seek wisdom and excellence.
+        </p>
+        
+        <div class="hero-actions">
+          <a href="library.html" class="btn btn-primary btn-lg">
+            Explore Library
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="categories.html" class="btn btn-secondary btn-lg">
+            Browse Categories
+          </a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <span class="hero-stat-value" id="stat-books">0</span>
+            <span class="hero-stat-label">Books</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" id="stat-categories">0</span>
+            <span class="hero-stat-label">Categories</span>
+          </div>
+          <div class="hero-stat">
+            <span class="hero-stat-value" id="stat-authors">0</span>
+            <span class="hero-stat-label">Authors</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-scroll-indicator">
+        <span>Scroll to explore</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="section featured-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Editor's Picks
+          </span>
+          <h2 class="section-title">Featured Resources</h2>
+          <p class="section-description">
+            Hand-picked selections that define excellence in their fields
+          </p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="featured-grid" id="featured-books">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+            Browse by Topic
+          </span>
+          <h2 class="section-title">Popular Categories</h2>
+          <p class="section-description">
+            Explore our carefully organized collection across diverse subjects
+          </p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="categories-grid" id="popular-categories">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="categories.html" class="btn btn-secondary">
+            View All Categories
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recently Added Section -->
+    <section class="section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Fresh Additions
+          </span>
+          <h2 class="section-title">Recently Added</h2>
+          <p class="section-description">
+            The latest additions to our growing collection
+          </p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="books-grid" id="recent-books">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <div class="text-center mt-8">
+          <a href="library.html" class="btn btn-primary">
+            View Full Library
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section section-lg">
+      <div class="container">
+        <div class="text-center" style="max-width: 600px; margin: 0 auto;">
+          <h2 class="section-title" style="font-size: var(--text-3xl); margin-bottom: var(--space-6);">
+            Start Your Journey
+          </h2>
+          <p class="section-description" style="margin-bottom: var(--space-8);">
+            Join thousands of knowledge seekers who have discovered the power of curated learning.
+          </p>
+          <div class="flex justify-center gap-4">
+            <a href="library.html" class="btn btn-primary btn-lg">
+              Explore Now
+            </a>
+            <a href="about.html" class="btn btn-secondary btn-lg">
+              Learn More
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <svg viewBox="0 0 40 40" fill="currentColor">
+              <path d="M8 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V6z"/>
+            </svg>
+            <span>Jay Libraries</span>
+          </div>
+          <p class="footer-tagline">
+            A premium digital library for knowledge seekers. 
+            Curated excellence, zero noise.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <a href="#" aria-label="GitHub">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Library</h4>
+          <ul class="footer-links">
+            <li><a href="library.html">All Books</a></li>
+            <li><a href="categories.html">Categories</a></li>
+            <li><a href="favorites.html">Favorites</a></li>
+            <li><a href="library.html?featured=true">Featured</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Resources</h4>
+          <ul class="footer-links">
+            <li><a href="about.html">About</a></li>
+            <li><a href="rules.html">Rules & Usage</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Categories</h4>
+          <ul class="footer-links">
+            <li><a href="library.html?category=Philosophy">Philosophy</a></li>
+            <li><a href="library.html?category=Technology">Technology</a></li>
+            <li><a href="library.html?category=Business">Business</a></li>
+            <li><a href="library.html?category=Design">Design</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2024 Jay Libraries. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/app.js"></script>
+</body>
+</html>
