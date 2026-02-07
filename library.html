@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Browse our complete collection of books and resources at Jay Libraries.">
+  <title>Library - Jay Libraries</title>
+  
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  
+  <style>
+    /* Library-specific list view styles */
+    .books-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .book-list-item {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      gap: var(--space-6);
+      padding: var(--space-5);
+      background: var(--gray-950);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius-xl);
+      transition: all var(--transition-base);
+    }
+
+    .book-list-item:hover {
+      border-color: var(--color-accent);
+    }
+
+    .book-list-image {
+      aspect-ratio: 3 / 4;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--gray-900);
+    }
+
+    .book-list-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .book-list-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+    }
+
+    .book-list-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+    }
+
+    .book-list-title {
+      font-family: var(--font-serif);
+      font-size: var(--text-lg);
+    }
+
+    .book-list-author {
+      color: var(--gray-400);
+      font-size: var(--text-sm);
+    }
+
+    .book-list-description {
+      color: var(--gray-500);
+      font-size: var(--text-sm);
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .book-list-meta {
+      display: flex;
+      gap: var(--space-4);
+      font-size: var(--text-xs);
+      color: var(--gray-500);
+      margin-top: auto;
+    }
+
+    .book-list-meta span {
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+    }
+
+    .book-list-meta svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .book-list-actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      justify-content: center;
+    }
+
+    .book-list-actions .btn-icon {
+      color: var(--gray-400);
+    }
+
+    .book-list-actions .btn-icon.active {
+      color: var(--color-accent);
+    }
+
+    @media (max-width: 768px) {
+      .book-list-item {
+        grid-template-columns: 80px 1fr;
+        grid-template-rows: auto auto;
+      }
+
+      .book-list-actions {
+        grid-column: 1 / -1;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding-top: var(--space-4);
+        border-top: 1px solid var(--gray-800);
+        margin-top: var(--space-4);
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (same as index.html) -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="currentColor">
+          <path d="M8 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V6z"/>
+          <path d="M12 10h16M12 16h16M12 22h10" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Jay <span>Libraries</span></span>
+      </a>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="library.html" class="nav-link active">Library</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="search-toggle" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <a href="favorites.html" class="favorites-toggle" aria-label="View favorites">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="favorites-badge" style="display: none;">0</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Search Modal -->
+  <div class="search-modal" role="dialog" aria-label="Search">
+    <div class="search-modal-header">
+      <svg class="search-modal-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" class="search-modal-input" placeholder="Search books, authors, categories..." autocomplete="off">
+      <button class="search-modal-close" aria-label="Close search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="search-modal-body" id="search-results"></div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="padding-top: calc(var(--header-height) + var(--space-8));">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="section-header section-header-left" style="margin-bottom: var(--space-8);">
+        <span class="section-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m16 6 4 14"/><path d="M12 6v14"/><path d="M8 8v12"/><path d="M4 4v16"/></svg>
+          Complete Collection
+        </span>
+        <h1 class="section-title">Library</h1>
+        <p class="section-description">
+          Browse and filter our complete collection of books and resources.
+        </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Filters Bar -->
+      <div class="filters-bar">
+        <div class="filters-search">
+          <svg class="filters-search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          <input type="text" class="filters-search-input" id="library-search" placeholder="Search in library...">
+        </div>
+
+        <div id="filter-category"></div>
+        <div id="filter-author"></div>
+        <div id="filter-year"></div>
+        <div id="filter-format"></div>
+        <div id="sort-dropdown"></div>
+        <div class="view-toggle" id="view-toggle"></div>
+      </div>
+
+      <!-- Active Filters -->
+      <div id="active-filters"></div>
+
+      <!-- Results Count -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-6);">
+        <p id="result-count" class="text-muted"></p>
+      </div>
+
+      <!-- Books Grid/List -->
+      <div class="books-grid" id="books-grid">
+        <!-- Populated by JavaScript -->
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination"></div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: var(--space-20);">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none; padding-top: 0;">
+        <p>&copy; 2024 Jay Libraries. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/library.js"></script>
+</body>
+</html>
