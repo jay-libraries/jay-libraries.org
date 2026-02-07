@@ -1,0 +1,65 @@
+[
+  {
+    "id": "cat-01",
+    "name": "Philosophy",
+    "description": "Thought, logic, wisdom, and the fundamental nature of existence",
+    "icon": "brain",
+    "color": "#8B5CF6"
+  },
+  {
+    "id": "cat-02",
+    "name": "Technology",
+    "description": "Digital innovation, software development, and the tech world",
+    "icon": "cpu",
+    "color": "#06B6D4"
+  },
+  {
+    "id": "cat-03",
+    "name": "Design",
+    "description": "Visual arts, UX/UI, and creative principles",
+    "icon": "palette",
+    "color": "#EC4899"
+  },
+  {
+    "id": "cat-04",
+    "name": "Programming",
+    "description": "Code, algorithms, and software engineering",
+    "icon": "code",
+    "color": "#10B981"
+  },
+  {
+    "id": "cat-05",
+    "name": "Business",
+    "description": "Entrepreneurship, strategy, and organizational growth",
+    "icon": "briefcase",
+    "color": "#F59E0B"
+  },
+  {
+    "id": "cat-06",
+    "name": "Self-Development",
+    "description": "Personal growth, habits, and self-improvement",
+    "icon": "target",
+    "color": "#EF4444"
+  },
+  {
+    "id": "cat-07",
+    "name": "History",
+    "description": "Past events, civilizations, and human heritage",
+    "icon": "scroll",
+    "color": "#8B4513"
+  },
+  {
+    "id": "cat-08",
+    "name": "Finance",
+    "description": "Money, investing, and economic principles",
+    "icon": "wallet",
+    "color": "#22C55E"
+  },
+  {
+    "id": "cat-09",
+    "name": "Psychology",
+    "description": "The human mind, behavior, and mental processes",
+    "icon": "heart",
+    "color": "#A855F7"
+  }
+]
