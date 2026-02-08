@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Publish your books and content on Jay Libraries. 70% revenue share for publishers.">
+  <title>Publish with Us - Jay Libraries</title>
+  
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+  
+  <style>
+    /* Publish Page Specific Styles */
+    .revenue-split-card {
+      background: var(--gray-950);
+      border: 2px solid var(--color-accent);
+      border-radius: var(--radius);
+      padding: 48px;
+      text-align: center;
+      margin: 48px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .revenue-split-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--color-accent), var(--color-accent-hover));
+    }
+    
+    .revenue-split-numbers {
+      display: flex;
+      justify-content: center;
+      gap: 64px;
+      margin: 32px 0;
+    }
+    
+    .revenue-split-item {
+      text-align: center;
+    }
+    
+    .revenue-percentage {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--color-accent);
+      line-height: 1;
+    }
+    
+    .revenue-label {
+      font-size: 0.875rem;
+      color: var(--gray-400);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+    
+    .process-timeline {
+      position: relative;
+      padding: 32px 0;
+      margin: 48px 0;
+    }
+    
+    .process-timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--gray-800);
+      transform: translateX(-50%);
+    }
+    
+    .process-step {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    
+    .process-step:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    
+    .process-step-number {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-accent);
+      color: var(--color-primary);
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 700;
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1;
+    }
+    
+    .process-step-content {
+      flex: 1;
+      padding: 24px;
+      background: var(--gray-950);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius);
+    }
+    
+    .process-step:nth-child(odd) .process-step-content {
+      margin-right: calc(50% + 40px);
+    }
+    
+    .process-step:nth-child(even) .process-step-content {
+      margin-left: calc(50% + 40px);
+    }
+    
+    @media (max-width: 768px) {
+      .revenue-split-numbers {
+        gap: 32px;
+      }
+      
+      .revenue-percentage {
+        font-size: 3rem;
+      }
+      
+      .process-timeline::before {
+        left: 24px;
+      }
+      
+      .process-step,
+      .process-step:nth-child(even) {
+        flex-direction: row;
+      }
+      
+      .process-step-number {
+        left: 24px;
+      }
+      
+      .process-step-content,
+      .process-step:nth-child(odd) .process-step-content,
+      .process-step:nth-child(even) .process-step-content {
+        margin-left: 80px;
+        margin-right: 0;
+      }
+    }
+    
+    .requirements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin: 32px 0;
+    }
+    
+    .requirement-card {
+      padding: 24px;
+      background: var(--gray-950);
+      border: 1px solid var(--gray-800);
+      border-radius: var(--radius);
+      transition: all var(--transition);
+    }
+    
+    .requirement-card:hover {
+      border-color: var(--color-accent);
+    }
+    
+    .requirement-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-accent-muted);
+      color: var(--color-accent);
+      border-radius: 8px;
+      margin-bottom: 16px;
+    }
+    
+    .requirement-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    
+    .requirement-title {
+      font-size: 1.125rem;
+      margin-bottom: 8px;
+    }
+    
+    .requirement-description {
+      font-size: 0.875rem;
+      color: var(--gray-400);
+    }
+    
+    .email-cta {
+      text-align: center;
+      padding: 64px 24px;
+      background: linear-gradient(180deg, transparent, var(--gray-950), transparent);
+    }
+    
+    .email-cta-title {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    
+    .email-cta-description {
+      color: var(--gray-400);
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header (same as other pages) -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <!-- Logo Placeholder System -->
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="padding: 8px 16px; border: 2px solid var(--color-accent); border-radius: 8px;">
+            <span style="font-family: var(--font-serif); font-weight: 700; font-size: 1.25rem; color: var(--color-secondary);">JAY</span>
+          </div>
+          <span class="logo-text">Libraries</span>
+        </div>
+      </a>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="library.html" class="nav-link">Library</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="publish.html" class="nav-link active">Publish</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="rules.html" class="nav-link">Rules</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="search-toggle" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <a href="favorites.html" class="favorites-toggle" aria-label="View favorites">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="favorites-badge" style="display: none;">0</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding-top: calc(var(--header-height) + 48px);">
+    <div class="container">
+      <!-- Page Header -->
+      <div class="section-header">
+        <span class="section-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/><path d="M12 7a5 5 0 1 0 5 5"/><path d="M12 12v9"/><path d="M9.7 20.4a9 9 0 1 1 4.6 0"/></svg>
+          Partner with Us
+        </span>
+        <h1 class="section-title">Publish with Jay Libraries</h1>
+        <p class="section-description">
+          Share your knowledge with the world and earn 70% of all revenue generated from your content.
+        </p>
+        <div class="section-divider"></div>
+      </div>
+
+      <!-- Revenue Split Card -->
+      <div class="revenue-split-card">
+        <h2 style="font-size: 1.5rem; margin-bottom: 8px;">Fair Revenue Sharing</h2>
+        <p style="color: var(--gray-400); margin-bottom: 32px;">
+          We believe in rewarding creators fairly for their work
+        </p>
+        <div class="revenue-split-numbers">
+          <div class="revenue-split-item">
+            <div class="revenue-percentage" id="publisher-percentage">70%</div>
+            <div class="revenue-label">Publisher Share</div>
+          </div>
+          <div class="revenue-split-item">
+            <div class="revenue-percentage" id="platform-percentage">30%</div>
+            <div class="revenue-label">Platform Fee</div>
+          </div>
+        </div>
+        <p style="font-size: 0.875rem; color: var(--gray-500); margin-top: 24px;">
+          Payments handled through external agreement • Monthly settlements in NGN
+        </p>
+      </div>
+
+      <!-- Who Can Publish -->
+      <section style="margin: 80px 0;">
+        <div class="section-header section-header-left">
+          <h2 class="section-title" style="font-size: 2rem;">Who Can Publish?</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="requirements-grid">
+          <div class="requirement-card">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <h3 class="requirement-title">Authors & Writers</h3>
+            <p class="requirement-description">
+              Original content creators with books, guides, or educational materials
+            </p>
+          </div>
+          
+          <div class="requirement-card">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+            </div>
+            <h3 class="requirement-title">Publishers</h3>
+            <p class="requirement-description">
+              Publishing houses and content distributors with proper licensing
+            </p>
+          </div>
+          
+          <div class="requirement-card">
+            <div class="requirement-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <h3 class="requirement-title">Educators</h3>
+            <p class="requirement-description">
+              Teachers and institutions sharing educational resources and materials
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Publishing Process -->
+      <section style="margin: 80px 0;">
+        <div class="section-header section-header-left">
+          <h2 class="section-title" style="font-size: 2rem;">Publishing Process</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div class="process-timeline">
+          <div class="process-step">
+            <div class="process-step-number">1</div>
+            <div class="process-step-content">
+              <h3>Submit Your Content</h3>
+              <p style="color: var(--gray-400); margin-top: 8px;">
+                Send your manuscript and metadata to our publishing email with all required information.
+              </p>
+            </div>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number">2</div>
+            <div class="process-step-content">
+              <h3>Review Period</h3>
+              <p style="color: var(--gray-400); margin-top: 8px;">
+                Our team reviews your submission within 3-5 business days for quality and compliance.
+              </p>
+            </div>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number">3</div>
+            <div class="process-step-content">
+              <h3>Agreement & Terms</h3>
+              <p style="color: var(--gray-400); margin-top: 8px;">
+                Upon approval, we'll send you our publishing agreement outlining revenue share and terms.
+              </p>
+            </div>
+          </div>
+          
+          <div class="process-step">
+            <div class="process-step-number">4</div>
+            <div class="process-step-content">
+              <h3>Go Live</h3>
+              <p style="color: var(--gray-400); margin-top: 8px;">
+                Your content is published on Jay Libraries and starts earning revenue immediately.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Accepted Formats -->
+      <section style="margin: 80px 0;">
+        <div class="section-header section-header-left">
+          <h2 class="section-title" style="font-size: 2rem;">Accepted Formats</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 16px; margin-top: 32px;" id="accepted-formats">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- Content Guidelines -->
+      <section style="margin: 80px 0;">
+        <div class="section-header section-header-left">
+          <h2 class="section-title" style="font-size: 2rem;">Content Guidelines</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div style="background: var(--gray-950); border: 1px solid var(--gray-800); border-radius: var(--radius); padding: 32px;">
+          <ul id="content-guidelines" style="display: flex; flex-direction: column; gap: 16px;">
+            <!-- Populated by JavaScript -->
+          </ul>
+        </div>
+      </section>
+
+      <!-- Important Terms -->
+      <section style="margin: 80px 0;">
+        <div class="section-header section-header-left">
+          <h2 class="section-title" style="font-size: 2rem;">Important Terms</h2>
+          <div class="section-divider"></div>
+        </div>
+        
+        <div style="display: grid; gap: 24px;" id="legal-terms">
+          <!-- Populated by JavaScript -->
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <div class="email-cta">
+        <h2 class="email-cta-title">Ready to Publish?</h2>
+        <p class="email-cta-description">
+          Submit your content for review and join our growing library of premium resources.
+        </p>
+        <a href="mailto:jaylibraries@gmail.com?subject=Publishing%20Inquiry" class="btn btn-primary btn-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/></svg>
+          Contact jaylibraries@gmail.com
+        </a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer (updated version below) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none;">
+        <p>&copy; 2024 Jay Libraries. Revenue Split: 70% Publisher / 30% Platform.</p>
+        <div class="footer-bottom-links">
+          <a href="mailto:jaylibraries@gmail.com">jaylibraries@gmail.com</a>
+          <a href="rules.html">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/utils.js"></script>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/publish.js"></script>
+</body>
+</html>
