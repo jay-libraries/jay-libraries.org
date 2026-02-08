@@ -1,0 +1,38 @@
+{
+  "revenueSplit": {
+    "publisher": 70,
+    "platform": 30,
+    "description": "Publishers retain 70% of all revenue generated from their content"
+  },
+  "paymentType": "External agreement",
+  "currency": "NGN",
+  "minimumPayout": 5000,
+  "paymentSchedule": "Monthly",
+  "contactEmail": "jaylibraries@gmail.com",
+  "publishing": {
+    "acceptedFormats": ["PDF", "EPUB", "MOBI", "MP3", "M4B"],
+    "maxFileSize": "100MB",
+    "reviewPeriod": "3-5 business days",
+    "contentGuidelines": [
+      "Original work or proper licensing",
+      "High-quality formatting",
+      "Accurate metadata",
+      "No copyright infringement",
+      "Educational or literary value"
+    ],
+    "rejectionReasons": [
+      "Poor quality formatting",
+      "Copyright violations",
+      "Inappropriate content",
+      "Duplicate submission",
+      "Incomplete metadata"
+    ]
+  },
+  "legal": {
+    "contentOwnership": "Publishers retain full ownership of their content",
+    "platformRights": "Jay Libraries receives distribution rights only",
+    "liability": "Publishers are responsible for copyright and legal compliance",
+    "termination": "Either party may terminate with 30 days notice",
+    "disputes": "Resolved through external arbitration"
+  }
+}
