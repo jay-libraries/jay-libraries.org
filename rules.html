@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Rules and usage guidelines for Jay Libraries.">
+  <title>Rules & Usage - Jay Libraries</title>
+  
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <svg class="logo-icon" viewBox="0 0 40 40" fill="currentColor">
+          <path d="M8 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V6z"/>
+          <path d="M12 10h16M12 16h16M12 22h10" stroke="#000" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">Jay <span>Libraries</span></span>
+      </a>
+
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="library.html" class="nav-link">Library</a></li>
+          <li><a href="categories.html" class="nav-link">Categories</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+          <li><a href="rules.html" class="nav-link active">Rules</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <button class="search-toggle" aria-label="Open search">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+          </button>
+          <a href="favorites.html" class="favorites-toggle" aria-label="View favorites">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+            <span class="favorites-badge" style="display: none;">0</span>
+          </a>
+        </div>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <section class="rules-hero">
+      <div class="container">
+        <span class="section-badge">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Guidelines
+        </span>
+        <h1 class="section-title" style="font-size: var(--text-4xl);">Rules & Usage</h1>
+        <p class="section-description">
+          Please read and follow these guidelines for the best experience.
+        </p>
+        <div class="section-divider"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="rules-list" id="rules-list">
+          <!-- Populated by JavaScript -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" style="margin-top: var(--space-20);">
+    <div class="container">
+      <div class="footer-bottom" style="border-top: none;">
+        <p>&copy; 2024 Jay Libraries. All rights reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/assets/js/utils.js"></script>
+  <script src="/assets/js/app.js"></script>
+  <script>
+    (async function() {
+      const container = document.getElementById('rules-list');
+      if (!container) return;
+
+      const rules = await JayLibraries.getRules();
+      if (!rules) {
+        container.innerHTML = '<p class="text-center text-muted">Failed to load rules.</p>';
+        return;
+      }
+
+      const allRules = [
+        { title: 'Usage Guidelines', rules: rules.usageRules },
+        { title: 'Content Guidelines', rules: rules.editingRules },
+        { title: 'Technical Guidelines', rules: rules.technicalRules }
+      ];
+
+      let ruleNumber = 1;
+
+      container.innerHTML = allRules.map(section => `
+        <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-6); margin-top: var(--space-10); color: var(--color-accent);">
+          ${section.title}
+        </h3>
+        ${section.rules.map(rule => `
+          <article class="rule-item">
+            <span class="rule-number">${ruleNumber++}</span>
+            <div class="rule-content">
+              <h3>${rule.title}</h3>
+              <p>${rule.description}</p>
+            </div>
+          </article>
+        `).join('')}
+      `).join('');
+    })();
+  </script>
+</body>
+</html>
