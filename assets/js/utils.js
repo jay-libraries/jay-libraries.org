@@ -20,15 +20,15 @@ const JayLibraries = {
   },
 
   async getBooks() {
-    return await this.fetchJSON('/assets/json/books.json');
+    return await this.fetchJSON('assets/json/books.json');
   },
 
   async getCategories() {
-    return await this.fetchJSON('/assets/json/categories.json');
+    return await this.fetchJSON('assets/json/categories.json');
   },
 
   async getRules() {
-    return await this.fetchJSON('/assets/json/siteRules.json');
+    return await this.fetchJSON('assets/json/siteRules.json');
   },
 
   async getBookById(id) {
