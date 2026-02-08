@@ -31,20 +31,25 @@
   <header class="header">
     <div class="container header-inner">
       <a href="index.html" class="logo">
-        <svg class="logo-icon" viewBox="0 0 40 40" fill="currentColor">
-          <path d="M8 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v28a2 2 0 0 1-2 2H10a2 2 0 0 1-2-2V6z"/>
-          <path d="M12 10h16M12 16h16M12 22h10" stroke="#000" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <span class="logo-text">Jay <span>Libraries</span></span>
+  <!-- Logo Placeholder System -->
+  <div style="display: flex; align-items: center; gap: 12px;">
+    <div style="padding: 8px 16px; border: 2px solid var(--color-accent); border-radius: 8px; position: relative;">
+      <span style="font-family: var(--font-serif); font-weight: 700; font-size: 1.25rem; color: var(--color-secondary);">JAY</span>
+      <!-- Small "logo coming soon" indicator -->
+      <span style="position: absolute; bottom: -18px; left: 50%; transform: translateX(-50%); font-size: 8px; color: var(--gray-600); white-space: nowrap; letter-spacing: 0.05em;">LOGO SOON</span>
+    </div>
+    <span class="logo-text">Libraries</span>
+  </div>
       </a>
 
       <nav class="nav">
         <ul class="nav-list">
-          <li><a href="index.html" class="nav-link active">Home</a></li>
-          <li><a href="library.html" class="nav-link">Library</a></li>
-          <li><a href="categories.html" class="nav-link">Categories</a></li>
-          <li><a href="about.html" class="nav-link">About</a></li>
-          <li><a href="rules.html" class="nav-link">Rules</a></li>
+  <li><a href="index.html" class="nav-link">Home</a></li>
+  <li><a href="library.html" class="nav-link">Library</a></li>
+  <li><a href="categories.html" class="nav-link">Categories</a></li>
+  <li><a href="publish.html" class="nav-link">Publish</a></li>
+  <li><a href="about.html" class="nav-link">About</a></li>
+  <li><a href="rules.html" class="nav-link">Rules</a></li>
         </ul>
 
         <div class="nav-actions">
@@ -83,6 +88,13 @@
     <!-- Hero Section -->
     <section class="hero">
       <div class="hero-content">
+        <!-- In hero-content, before the hero-badge -->
+<div style="margin-bottom: 32px;">
+  <div style="display: inline-flex; align-items: center; justify-content: center; padding: 16px 32px; border: 3px solid var(--color-accent); border-radius: 16px;">
+    <span style="font-family: var(--font-serif); font-weight: 700; font-size: 3rem; color: var(--color-secondary);">JAY</span>
+  </div>
+  <div style="width: 100px; height: 3px; background: var(--color-accent); margin: 16px auto;"></div>
+</div>
         <span class="hero-badge">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/></svg>
           Premium Digital Library
@@ -287,8 +299,11 @@
       </div>
 
       <div class="footer-bottom">
-        <p>&copy; 2024 Jay Libraries. All rights reserved.</p>
+        <p>&copy; 2026 Jay Libraries. All rights reserved.</p>
         <div class="footer-bottom-links">
+          <a href="mailto:jaylibraries@gmail.com" style="color: var(--color-accent);">jaylibraries@gmail.com</a>
+          <a href="publish.html">Publish</a>
+          <a href="rules.html">Terms</a>
           <a href="#">Privacy Policy</a>
           <a href="#">Terms of Service</a>
         </div>
